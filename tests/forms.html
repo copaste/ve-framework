@@ -1,0 +1,336 @@
+<html>
+
+<head>
+    <title>Forms - ve framework</title>
+    <meta charset="utf-8">
+</head>
+
+<body>
+
+<div data-controller="FormController">
+    <div class="content guide with-sidebar forms-guide">
+
+        <h1>Form Input Bindings</h1>
+
+        <div id="example-1" class="demo">
+            <input placeholder="edit me" data-model="form.inputModel">
+            <p>Message is: {{form.inputModel}}</p>
+        </div>
+
+        <a href="#Multiline-text" data-scroll="">
+            Multiline text
+        </a>
+        <figure class="highlight html">
+            <table>
+                <tbody>
+                <tr>
+                    <td class="code">
+                                <pre>
+                            <div class="line">
+                                <span class="tag">&lt;<span class="name">span</span>&gt;</span>Multiline message is:<span
+                                    class="tag">&lt;/<span class="name">span</span>&gt;</span></div><div class="line"><span
+                                        class="tag">&lt;<span class="name">p</span> <span class="attr">style</span>=<span
+                                        class="string">"white-space: pre"</span>&gt;</span>{{ message }}<span
+                                        class="tag">&lt;/<span class="name">p</span>&gt;</span></div><div class="line"><span
+                                        class="tag">&lt;<span class="name">br</span>&gt;</span></div><div class="line"><span
+                                        class="tag">&lt;<span class="name">textarea</span> <span
+                                        class="attr">v-model</span>=<span class="string">"message"</span> <span class="attr">placeholder</span>=<span
+                                        class="string">"add multiple lines"</span>&gt;</span><span class="tag">&lt;/<span
+                                        class="name">textarea</span>&gt;</span>
+                            </div>
+                        </pre>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </figure>
+
+        <div id="example-textarea" class="demo"><span>Multiline message is: </span>
+            <p style="white-space: pre;">{{form.textModel}}</p>
+            <br>
+            <textarea placeholder="add multiple lines" data-model="form.textModel"></textarea>
+        </div>
+
+
+        <p class="tip">Interpolation on textareas (<code>&lt;textarea&gt;{{text}}&lt;/textarea&gt;</code>) won't work. Use <code>v-model</code> instead.</p>
+
+        <a href="#Checkbox" data-scroll="">
+            <h3 id="Checkbox">
+                <a href="#Checkbox" class="headerlink" title="Checkbox"></a>Checkbox
+            </h3>
+        </a>
+
+        <p>Single checkbox, boolean value:</p>
+        <figure class="highlight html">
+            <table>
+                <tbody>
+                <tr>
+                    <td class="code">
+                        <pre>
+                            <div class="line">
+                                <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span
+                                        class="string">"checkbox"</span> <span class="attr">id</span>=<span class="string">"checkbox"</span> <span
+                                        class="attr">v-model</span>=<span class="string">"checked"</span>&gt;</span></div><div
+                                        class="line"><span class="tag">&lt;<span class="name">label</span> <span class="attr">for</span>=<span
+                                        class="string">"checkbox"</span>&gt;</span>{{ checked }}<span class="tag">&lt;/<span
+                                        class="name">label</span>&gt;</span>
+                            </div>
+                        </pre>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </figure>
+
+        <div id="example-2" class="demo">
+            <input type="checkbox" id="checkbox" data-model="form.checkbox">
+            <label for="checkbox">{{form.checkbox}}</label>
+        </div>
+
+        <p>Multiple checkboxes, bound to the same Array:</p>
+        <figure class="highlight html">
+            <table>
+                <tbody>
+                <tr>
+                    <td class="code">
+                                <pre><div class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span
+                                        class="string">"checkbox"</span> <span class="attr">id</span>=<span class="string">"jack"</span> <span
+                                        class="attr">value</span>=<span class="string">"Jack"</span> <span
+                                        class="attr">v-model</span>=<span class="string">"checkedNames"</span>&gt;</span></div><div
+                                        class="line"><span class="tag">&lt;<span class="name">label</span> <span class="attr">for</span>=<span
+                                        class="string">"jack"</span>&gt;</span>Jack<span class="tag">&lt;/<span class="name">label</span>&gt;</span></div><div
+                                        class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span
+                                        class="string">"checkbox"</span> <span class="attr">id</span>=<span class="string">"john"</span> <span
+                                        class="attr">value</span>=<span class="string">"John"</span> <span
+                                        class="attr">v-model</span>=<span class="string">"checkedNames"</span>&gt;</span></div><div
+                                        class="line"><span class="tag">&lt;<span class="name">label</span> <span class="attr">for</span>=<span
+                                        class="string">"john"</span>&gt;</span>John<span class="tag">&lt;/<span class="name">label</span>&gt;</span></div><div
+                                        class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span
+                                        class="string">"checkbox"</span> <span class="attr">id</span>=<span class="string">"mike"</span> <span
+                                        class="attr">value</span>=<span class="string">"Mike"</span> <span
+                                        class="attr">v-model</span>=<span class="string">"checkedNames"</span>&gt;</span></div><div
+                                        class="line"><span class="tag">&lt;<span class="name">label</span> <span class="attr">for</span>=<span
+                                        class="string">"mike"</span>&gt;</span>Mike<span class="tag">&lt;/<span class="name">label</span>&gt;</span></div><div
+                                        class="line"><span class="tag">&lt;<span class="name">br</span>&gt;</span></div><div
+                                        class="line"><span class="tag">&lt;<span class="name">span</span>&gt;</span>Checked names: {{ checkedNames }}<span
+                                        class="tag">&lt;/<span class="name">span</span>&gt;</span></div></pre>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </figure>
+        <figure class="highlight js">
+            <table>
+                <tbody>
+                <tr>
+                    <td class="code">
+                                <pre><div class="line"><span class="keyword">new</span> Vue({</div><div class="line">  <span
+                                        class="attr">el</span>: <span class="string">'...'</span>,</div><div
+                                        class="line">  <span class="attr">data</span>: {</div><div class="line">    <span
+                                        class="attr">checkedNames</span>: []</div><div class="line">  }</div><div class="line">})</div></pre>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </figure>
+
+        <div id="example-3" class="demo">
+            <input type="checkbox" id="jack" value="Jack" data-model="form.mcheckbox.jack">
+            <label for="jack">Jack</label>
+            <input type="checkbox" id="john" value="John" data-model="form.mcheckbox.john">
+            <label for="john">John</label>
+            <input type="checkbox" id="mike" value="Mike" data-model="form.mcheckbox.mike">
+            <label for="mike">Mike</label>
+            <br> <span>Checked names: [{{form.mcheckbox | json}}]</span>
+        </div>
+
+        <a href="#Radio" data-scroll=""><h3 id="Radio"><a href="#Radio" class="headerlink" title="Radio"></a>Radio</h3>
+        </a>
+        <figure class="highlight html">
+            <table>
+                <tbody>
+                <tr>
+                    <td class="code">
+                                <pre><div class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span
+                                        class="string">"radio"</span> <span class="attr">id</span>=<span
+                                        class="string">"one"</span> <span class="attr">value</span>=<span
+                                        class="string">"One"</span> <span class="attr">v-model</span>=<span class="string">"picked"</span>&gt;</span></div><div
+                                        class="line"><span class="tag">&lt;<span class="name">label</span> <span class="attr">for</span>=<span
+                                        class="string">"one"</span>&gt;</span>One<span class="tag">&lt;/<span
+                                        class="name">label</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span
+                                        class="name">br</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span
+                                        class="name">input</span> <span class="attr">type</span>=<span
+                                        class="string">"radio"</span> <span class="attr">id</span>=<span
+                                        class="string">"two"</span> <span class="attr">value</span>=<span
+                                        class="string">"Two"</span> <span class="attr">v-model</span>=<span class="string">"picked"</span>&gt;</span></div><div
+                                        class="line"><span class="tag">&lt;<span class="name">label</span> <span class="attr">for</span>=<span
+                                        class="string">"two"</span>&gt;</span>Two<span class="tag">&lt;/<span
+                                        class="name">label</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span
+                                        class="name">br</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span
+                                        class="name">span</span>&gt;</span>Picked: {{ picked }}<span class="tag">&lt;/<span
+                                        class="name">span</span>&gt;</span></div></pre>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </figure>
+
+        <div id="example-4" class="demo">
+            <input type="radio" id="one" name="fradio" value="One" data-model="form.radio">
+            <label for="one">One</label>
+            <br>
+            <input type="radio" id="two" name="fradio" value="Two" data-model="form.radio">
+            <label for="two">Two</label>
+            <br> <span>Picked: {{form.radio}}</span>
+        </div>
+
+        <a href="#Select" data-scroll=""><h3 id="Select"><a href="#Select" class="headerlink" title="Select"></a>Select
+        </h3>
+        </a>
+        <p>Single select:</p>
+        <figure class="highlight html">
+            <table>
+                <tbody>
+                <tr>
+                    <td class="code">
+                                <pre><div class="line"><span class="tag">&lt;<span class="name">select</span> <span
+                                        class="attr">v-model</span>=<span class="string">"selected"</span>&gt;</span></div><div
+                                        class="line">  <span class="tag">&lt;<span class="name">option</span>&gt;</span>A<span
+                                        class="tag">&lt;/<span class="name">option</span>&gt;</span></div><div
+                                        class="line">  <span class="tag">&lt;<span class="name">option</span>&gt;</span>B<span
+                                        class="tag">&lt;/<span class="name">option</span>&gt;</span></div><div
+                                        class="line">  <span class="tag">&lt;<span class="name">option</span>&gt;</span>C<span
+                                        class="tag">&lt;/<span class="name">option</span>&gt;</span></div><div
+                                        class="line"><span class="tag">&lt;/<span class="name">select</span>&gt;</span></div><div
+                                        class="line"><span class="tag">&lt;<span class="name">span</span>&gt;</span>Selected: {{ selected }}<span
+                                        class="tag">&lt;/<span class="name">span</span>&gt;</span></div></pre>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </figure>
+
+        <div id="example-5" class="demo">
+            <select data-model="form.sselect">
+                <option>A</option>
+                <option>B</option>
+                <option>C</option>
+            </select> <span>Selected: {{form.sselect}}</span>
+        </div>
+
+        <p>Multiple select (bound to Array):</p>
+        <figure class="highlight html">
+            <table>
+                <tbody>
+                <tr>
+                    <td class="code">
+                                <pre><div class="line"><span class="tag">&lt;<span class="name">select</span> <span
+                                        class="attr">v-model</span>=<span class="string">"selected"</span> <span class="attr">multiple</span>&gt;</span></div><div
+                                        class="line">  <span class="tag">&lt;<span class="name">option</span>&gt;</span>A<span
+                                        class="tag">&lt;/<span class="name">option</span>&gt;</span></div><div
+                                        class="line">  <span class="tag">&lt;<span class="name">option</span>&gt;</span>B<span
+                                        class="tag">&lt;/<span class="name">option</span>&gt;</span></div><div
+                                        class="line">  <span class="tag">&lt;<span class="name">option</span>&gt;</span>C<span
+                                        class="tag">&lt;/<span class="name">option</span>&gt;</span></div><div
+                                        class="line"><span class="tag">&lt;/<span class="name">select</span>&gt;</span></div><div
+                                        class="line"><span class="tag">&lt;<span class="name">br</span>&gt;</span></div><div
+                                        class="line"><span class="tag">&lt;<span class="name">span</span>&gt;</span>Selected: {{ selected }}<span
+                                        class="tag">&lt;/<span class="name">span</span>&gt;</span></div></pre>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </figure>
+
+        <div id="example-6" class="demo">
+            <select multiple="multiple" style="width: 50px;" data-model="form.mselect">
+                <option>A</option>
+                <option>B</option>
+                <option>C</option>
+            </select>
+            <br> <span>Selected: [{{form.mselect}}]</span>
+        </div>
+
+        <p>Dynamic options rendered with <code>v-for</code>:</p>
+        <figure class="highlight html">
+            <table>
+                <tbody>
+                <tr>
+                    <td class="code">
+                                <pre><div class="line"><span class="tag">&lt;<span class="name">select</span> <span
+                                        class="attr">v-model</span>=<span class="string">"selected"</span>&gt;</span></div><div
+                                        class="line">  <span class="tag">&lt;<span class="name">option</span> <span
+                                        class="attr">v-for</span>=<span class="string">"option in options"</span> <span
+                                        class="attr">v-bind:value</span>=<span
+                                        class="string">"option.value"</span>&gt;</span></div><div class="line">    {{ option.text }}</div><div
+                                        class="line">  <span class="tag">&lt;/<span class="name">option</span>&gt;</span></div><div
+                                        class="line"><span class="tag">&lt;/<span class="name">select</span>&gt;</span></div><div
+                                        class="line"><span class="tag">&lt;<span class="name">span</span>&gt;</span>Selected: {{ selected }}<span
+                                        class="tag">&lt;/<span class="name">span</span>&gt;</span></div></pre>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </figure>
+        <figure class="highlight js">
+            <table>
+                <tbody>
+                <tr>
+                    <td class="code">
+                                <pre><div class="line"><span class="keyword">new</span> Vue({</div><div class="line">  <span
+                                        class="attr">el</span>: <span class="string">'...'</span>,</div><div
+                                        class="line">  <span class="attr">data</span>: {</div><div class="line">    <span
+                                        class="attr">selected</span>: <span class="string">'A'</span>,</div><div class="line">    <span
+                                        class="attr">options</span>: [</div><div class="line">      { <span
+                                        class="attr">text</span>: <span class="string">'One'</span>, <span
+                                        class="attr">value</span>: <span class="string">'A'</span> },</div><div class="line">      { <span
+                                        class="attr">text</span>: <span class="string">'Two'</span>, <span
+                                        class="attr">value</span>: <span class="string">'B'</span> },</div><div class="line">      { <span
+                                        class="attr">text</span>: <span class="string">'Three'</span>, <span
+                                        class="attr">value</span>: <span class="string">'C'</span> }</div><div class="line">    ]</div><div
+                                        class="line">  }</div><div class="line">})</div></pre>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </figure>
+
+
+        <div class="footer">
+            Caught a mistake or want to contribute to the documentation?
+            <a href="https://github.com/vuejs/vuejs.org/blob/master/src/v2/guide/forms.md" target="_blank">
+                Edit this page on Github!
+            </a>
+        </div>
+    </div>
+</div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script src="../ve.js"></script>
+
+<script>
+    function FormController(todoStore) {
+        var formCtrl = this;
+        this.form = {
+            inputModel: 'init',
+            radio: 'Two',
+            sselect: 'C',
+            mselect: ['A','C'],
+            mcheckbox: {
+                jack: true,
+                john: false,
+                mike: false
+            }
+        };
+    }
+
+    // Injecting the controller with "TodoStoreService"
+    FormController.$inject = [];
+    // Registering the controller
+    vejs.controller('FormController', FormController);
+    // Bootstrap the application
+    vejs.bootstrap();
+</script>
+</body>
+
+</html>

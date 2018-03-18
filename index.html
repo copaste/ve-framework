@@ -1,0 +1,49 @@
+<html>
+<head>
+    <title>Todo list - ve framework</title>
+    <meta charset="utf-8">
+    <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+
+    <div data-controller="TodoController">
+        <div class="header">
+            <h2>My To Do List</h2>
+            <form data-submit="addTodo(event)" name="todoForm" data-form-data="todoFormData" novalidate>
+                <input type="text" name="todo_name" placeholder="Title...">
+                <button type="submit" class="addBtn">Add</button>
+            </form>
+        </div>
+        <div data-if="todos.length>0">{{todos.length}}</div>
+        <div data-if="todoId===201">{{todoId}} da</div>
+        <p>{{tasksLeft}} tasks left.</p>
+        <ul id="todoListActions">
+            <li class="sort">
+                Sort:
+                <a href="#" data-click="sortTodo('ASC')">A-Z</a>
+                <a href="#" data-click="sortTodo('DESC')">Z-A</a>
+            </li>
+            <li class="filters">
+                Filters:
+                <a href="#" data-click="todoVisibilityFilter('all')">All</a>
+                <a href="#" data-click="todoVisibilityFilter('completed')">Completed</a>
+                <a href="#" data-click="todoVisibilityFilter('active')">Active</a>
+            </li>
+        </ul>
+        <hr>
+        <ul id="todoList">
+            <li data-repeat="todo in todos track by id" data-store="todoStore" data-class="{checked: todo.completed}">
+                <div data-click="toggleStatus(todo)">#{{todo.id}} {{todo.name}}</div>
+                <span data-click="editTodo(todo)" class="close edit">Edit</span>
+                <span data-click="removeTodo(todo.id)" class="close">×</span>
+            </li>
+        </ul>
+
+        <p>{{tasksLeft}} tasks left.</p>
+    </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="ve.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>

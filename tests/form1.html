@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div data-controller="FormController">
+    <form data-submit="send(event)" name="todoForm" data-class="{invalid: test}" novalidate>
+        <input name="todo_name" data-model="form.todoName">
+        <select name="todo_completed" data-model="form.todoState">
+            <option value="false">Active</option>
+            <option value="true">Completed</option>
+        </select>
+        <div data-form-group="firstGroup">
+            <input name="address" data-model="form.address">
+            <input name="street" data-model="form.address">
+            <input name="number" data-model="form.number">
+        </div>
+        <div data-form-group="secondGroup">
+            <input required name="address1" data-model="form.address1">
+            <input pattern="\d+" name="street1" data-model="form.street1">
+            <input type="email" name="number1" data-model="form.number1">
+        </div>
+
+        <input type="radio" name="myVarRad" value="dogs" data-model="form.myVarRad">Dogs
+        <input type="radio" name="myVarRad" value="tuts" data-model="form.myVarRad">Tutorials
+        <input type="radio" name="myVarRad" value="cars" data-model="form.myVarRad">Cars
+
+        <input type="checkbox" name="myVarCb" value="dogs" data-model="form.myVarCb">Dogs
+        <input type="checkbox" name="myVarCb" value="tuts" data-model="form.myVarCb">Tutorials
+        <input type="checkbox" name="myVarCb" value="cars" data-model="form.myVarCb">Cars
+        |
+
+        <input type="checkbox" name="myVarCb1" value="cars" data-model="form.myVarCb1">Cars
+        <button type="submit" data-if="test">send</button>
+
+    </form>
+    <ul id="todoList">
+        <li data-repeat="todo in todos" data-store="todoStore" data-click="toggleStatus(todo)" data-class="['perm', {hide: todo.completed}]">
+            #{{todo.id}} - {{todo.name}}
+            <button data-click="removeTodo(todo.id)">x</button>
+            <button data-click="editTodo(todo)">edit</button>
+        </li>
+    </ul>
+</div>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script src="../ve.js"></script>
+
+<script>
+    function FormController() {
+        var formCtrl = this;
+        this.test = true;
+
+        this.send = function () {
+            console.log(formCtrl);
+        };
+
+        this.form = {
+            myVarCb: 'tuts',
+            myVarRad: 'cars'
+        };
+    }
+
+    // Injecting the controller with "TodoStoreService"
+    FormController.$inject = [];
+    // Registering the controller
+    vejs.controller('FormController', FormController);
+    // Bootstrap the application
+    vejs.bootstrap();
+</script>
+</body>
+</html>
